@@ -1,11 +1,13 @@
-export interface Review {
+export type Review = {
   name: string;
+  email: string;
   date: string;
   rating: number;
+  helpful: number;
   comment?: string;
 }
 
-export interface AddReviewAction {
+export type AddReviewAction = {
   readonly type: "ADD_REVIEW";
   payload: Review;
 }
