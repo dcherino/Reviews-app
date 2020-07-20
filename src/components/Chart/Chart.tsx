@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { reviewsSelector, Review } from "../../slices/reviews";
 import PercentageBar from "./PercentageBar/PercentageBar";
@@ -9,7 +9,7 @@ const Chart = () => {
   const { reviews, loading, hasErrors } = useSelector(reviewsSelector);
   const numberOfBars = 6; // 6 bars starting from 0 to 5
 
-  const renderGraph = () => {
+  const renderGraph = useCallback(() => {
     if (loading) return <p>Loading...</p>;
     if (hasErrors) return <p>Cannot display graph...</p>;
 
@@ -17,8 +17,9 @@ const Chart = () => {
       <div style={{ marginTop: "40px" }}>
         {[...Array(numberOfBars)]
           .map((star, index) => {
-            const counter = reviews.filter((review: Review) => review.rating === index)
-              .length;
+            const counter = reviews.filter(
+              (review: Review) => review.rating === index
+            ).length;
             const percentValue = (counter / reviews.length) * 100;
             const roundedPercent = Math.ceil(percentValue * 1e2) / 1e2;
 
@@ -34,11 +35,11 @@ const Chart = () => {
           .reverse()}
       </div>
     );
-  };
+  }, [reviews, loading, hasErrors]);
 
   useEffect(() => {
     renderGraph();
-  }, [reviews]);
+  }, [reviews, renderGraph]);
 
   return (
     <ChartContainer>
