@@ -5,42 +5,11 @@ type ScaleStarProps = {
   cursor?: string;
 };
 
-// General
-export const Triangle = styled.div`
-  width: 60vw;
-  height: 60vw;
-  position: absolute;
-  top: 0;
-  left: -30vw;
-  z-index: 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0%, #d5f6f8),
-    color-stop(100%, #7adae0)
-  );
-  transform: rotate(-45deg);
-`;
-
-export const TriangleSmall = styled(Triangle)`
-  transform: rotate(45deg);
-  width: 40vw;
-  height: 40vw;
-  top: 10vh;
-  left: unset;
-  right: -20vw;
-`;
-
-// Product
-export const Product = styled.div``;
-
 export const AppContainer = styled.div`
   height: 100%;
   background-color: #e2e7e7;
   position: relative;
   overflow-x: hidden;
-
   &::before {
     content: "";
     width: 60vw;
@@ -61,11 +30,11 @@ export const AppContainer = styled.div`
 
   &::after {
     content: "";
-    width: 40vw;
-    height: 40vw;
+    width: 60vw;
+    height: 60vw;
     top: 10vh;
     left: unset;
-    right: -20vw;
+    right: -30vw;
     position: absolute;
     z-index: 0;
     background: -webkit-gradient(
@@ -76,41 +45,58 @@ export const AppContainer = styled.div`
       color-stop(100%, #7adae0)
     );
     transform: rotate(45deg);
-  }
+  }~
 `;
 
 export const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 84px 2fr 84px;
-  grid-template-rows: 78px 2fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 78px 1fr;
   gap: 0px 0px;
-  grid-template-areas: "Left Header Header" "Left Body Right";
-  max-width: 80%;
+  grid-template-areas: "Header" "Body";
+  max-width: 1440px;
+  width: 95%;
   margin: 5vh auto;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 5px rgba(191, 209, 232, 0.6);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 5px 10px rgba(82, 132, 160, 0.3);
   position: relative;
   z-index: 2;
 
+  @media (min-width: 1024px) {
+    width: 85%;
+  }
+
   & h1 {
-    font-weight: bold;
-    font-size: 20;
+    font: 400 2rem "Roboto";
     color: #323357;
-    text-align: center;
+    text-align: left;
   }
 `;
 
-export const RatingContainer = styled.div<ScaleStarProps>`
+export const Body = styled.main`
+  grid-area: Body;
+  background: #f0f3f4;
+  padding: 0 8vw;
+
+  @media (min-width: 1024px) {
+    padding: 0 84px;
+  }
+`;
+
+export const FormChartWrap = styled.div`
   margin-top: 20px;
   margin-bottom: 5px;
-  background-color: #fff;
-  border-radius: 40px;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
-  padding: 10px 15px;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+
+  @media (min-width: 1024px) {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
 `;
 
 export const Star = styled.svg<ScaleStarProps>`
