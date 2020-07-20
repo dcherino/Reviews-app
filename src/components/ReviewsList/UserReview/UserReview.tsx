@@ -25,7 +25,7 @@ const UserReview = ({
   posted,
   delayTime,
 }: UserReviewProps) => {
-  const [yourReview, setYourReview] = useState(posted);
+  const [yourReview] = useState(posted);
 
   return (
     <ReviewContainer delayTime={delayTime}>
