@@ -32,7 +32,6 @@ const ReviewForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // reviewDispatch({ type: "ADD_REVIEW", payload: review });
     reviewDispatch(updateReviews(review))
     setIsSent(true);
   };
