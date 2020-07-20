@@ -7,7 +7,7 @@ type ScaleStarProps = {
 
 export const AppContainer = styled.div`
   height: 100%;
-  background-color: #e2e7e7;
+  background-color: #dee5ea;
   position: relative;
   overflow-x: hidden;
   &::before {
