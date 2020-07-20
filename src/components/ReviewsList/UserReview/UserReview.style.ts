@@ -1,5 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
+interface ReviewContainerProps {
+  delayTime: number;
+}
+
 const slideInAnimation = keyframes`
   from {
     transform: translateX(-100px);
@@ -12,13 +16,14 @@ const slideInAnimation = keyframes`
   }
 `;
 
-export const ReviewContainer = styled.div`
+export const ReviewContainer = styled.div<ReviewContainerProps>`
   background: #fff;
   box-shadow: 0 5px 10px rgba(82, 132, 160, 0.3);
   padding: 20px;
   border-radius: 4px;
   margin-bottom: 20px;
-  animation: ${slideInAnimation} 0.4s linear;
+  opacity: 0;
+  animation: ${slideInAnimation} 0.4s ease ${props => props.delayTime}s forwards;
 
   & .review-header {
     position: relative;
@@ -27,17 +32,21 @@ export const ReviewContainer = styled.div`
 
 export const ReviewInfo = styled.div`
   strong {
-    display: block;
+    display: inline-block;
     font: 700 18px "Roboto";
     color: #000;
     margin: 0 0 10px;
   }
 
   span {
-    display: block;
+    display: inline-block;
     font: 400 14px "Roboto";
     color: #555;
     margin: 0 0 20px;
+  }
+
+  .date {
+    display: block;
   }
 `;
 

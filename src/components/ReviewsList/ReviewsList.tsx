@@ -27,6 +27,7 @@ export const ReviewsList = () => {
         {...review}
         key={review.name + index}
         posted={(postedNew) && (currentPage === 1) && (index === 0)}
+        delayTime={index === 0 ? 0.1 : (index/ 500)*100}
       />
     ));
   };

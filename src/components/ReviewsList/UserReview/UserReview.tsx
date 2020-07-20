@@ -17,14 +17,28 @@ type UserReviewProps = {
   comment: string;
   helpful: number;
   posted?: boolean;
+  delayTime: number;
 };
-const UserReview = ({ name, email, date, rating, comment, helpful, posted }: UserReviewProps) => {
+const UserReview = ({
+  name,
+  email,
+  date,
+  rating,
+  comment,
+  helpful,
+  posted,
+  delayTime,
+}: UserReviewProps) => {
+  console.log(delayTime)
   return (
-    <ReviewContainer>
+    <ReviewContainer delayTime={delayTime}>
       <div className="review-header">
         <ReviewInfo>
-          <strong>{name}</strong>
-          <span>Posted: {formatDate(date)}</span>
+          <strong>{name}</strong>{" "}
+          <span className="email">
+            - <em>{email}</em>
+          </span>
+          <span className="date">Posted: {formatDate(date)}</span>
         </ReviewInfo>
 
         <div className="review-rating">
