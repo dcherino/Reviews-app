@@ -14,6 +14,7 @@ import usePagination from "../../hooks/pagination";
 import { ReviewsListContainer } from "./ReviewsList.styles";
 
 export const ReviewsList = () => {
+  const [shouldScroll, setShouldScroll] = useState(false);
   const { reviews, loading, hasErrors, postedNew } = useSelector(
     reviewsSelector
   );
@@ -37,13 +38,13 @@ export const ReviewsList = () => {
 
   useEffect(() => {
     // Scroll up when navigate through the pagination
-    if (listRef.current) {
+    if (shouldScroll && listRef.current) {
       scrollToBottom();
     }
   }, [currentPage]);
 
   useEffect(() => {
-    jump(0);
+    if (shouldScroll) jump(0);
   }, [reviews]);
 
   const renderReviews = () => {
@@ -63,11 +64,13 @@ export const ReviewsList = () => {
 
   const handleOnChange = (e: ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
+    setShouldScroll(true);
     jump(parseInt(e.currentTarget.value));
   };
 
   const handleOnClick = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    setShouldScroll(true);
 
     if (e.currentTarget.innerText === "Next") {
       next();
