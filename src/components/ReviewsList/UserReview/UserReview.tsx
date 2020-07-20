@@ -29,7 +29,6 @@ const UserReview = ({
   posted,
   delayTime,
 }: UserReviewProps) => {
-  console.log(delayTime)
   return (
     <ReviewContainer delayTime={delayTime}>
       <div className="review-header">
