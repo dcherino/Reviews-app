@@ -62,7 +62,7 @@ export const {
 } = reviewsSlice.actions;
 
 // A selector
-export const reviewsSelector = (state: Initial) => state.reviews;
+export const reviewsSelector = (state: { reviews: any }) => state.reviews;
 
 // The reducer
 export default reviewsSlice.reducer;
