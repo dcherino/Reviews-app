@@ -1,4 +1,10 @@
-import React, { useEffect, ChangeEvent, MouseEvent, useRef } from "react";
+import React, {
+  useEffect,
+  ChangeEvent,
+  MouseEvent,
+  useRef,
+  useState,
+} from "react";
 import { useSelector } from "react-redux";
 import { reviewsSelector } from "../../slices/reviews";
 import Pagination from "./Pagination/Pagination";
@@ -36,6 +42,10 @@ export const ReviewsList = () => {
     }
   }, [currentPage]);
 
+  useEffect(() => {
+    jump(0);
+  }, [reviews]);
+
   const renderReviews = () => {
     if (loading) return <p>Loading reviews...</p>;
     if (hasErrors) return <p>Cannot display reviews...</p>;
@@ -46,7 +56,7 @@ export const ReviewsList = () => {
         {...review}
         key={review.name + index}
         posted={postedNew && currentPage === 1 && index === 0}
-        delayTime={index === 0 ? 0.1 : (index / 500) * 100}
+        delayTime={index === 0 ? 0 : index / 10}
       />
     ));
   };
