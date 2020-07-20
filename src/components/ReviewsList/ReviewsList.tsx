@@ -1,4 +1,4 @@
-import React, { ChangeEvent, MouseEvent } from "react";
+import React, { useEffect, ChangeEvent, MouseEvent, useRef } from "react";
 import { useSelector } from "react-redux";
 import { reviewsSelector } from "../../slices/reviews";
 import Pagination from "./Pagination/Pagination";
@@ -12,10 +12,29 @@ export const ReviewsList = () => {
     reviewsSelector
   );
   const sortedArray = sortReviewsByDate(reviews);
+
+  // Pagination Hook
   const { next, prev, jump, currentData, currentPage, maxPage } = usePagination(
     sortedArray,
     20
   );
+
+  // Smooth scroll functionality
+  const listRef = useRef<HTMLDivElement>(null);
+  const scrollToBottom = () => {
+    if (listRef.current) {
+      listRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
+  useEffect(() => {
+    // Scroll up when navigate through the pagination
+    if (listRef.current) {
+      scrollToBottom();
+    }
+  }, [currentPage]);
 
   const renderReviews = () => {
     if (loading) return <p>Loading reviews...</p>;
@@ -26,8 +45,8 @@ export const ReviewsList = () => {
       <UserReview
         {...review}
         key={review.name + index}
-        posted={(postedNew) && (currentPage === 1) && (index === 0)}
-        delayTime={index === 0 ? 0.1 : (index/ 500)*100}
+        posted={postedNew && currentPage === 1 && index === 0}
+        delayTime={index === 0 ? 0.1 : (index / 500) * 100}
       />
     ));
   };
@@ -49,8 +68,7 @@ export const ReviewsList = () => {
   };
 
   return (
-    <ReviewsListContainer>
-      {/* Sort by: Recent - Rating */}
+    <ReviewsListContainer ref={listRef}>
       <h3>Reviews</h3>
       <h4>{reviews.length} customer reviews</h4>
       <div className="wrap-review">{renderReviews()}</div>
