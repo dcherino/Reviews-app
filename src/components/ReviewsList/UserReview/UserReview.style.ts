@@ -61,12 +61,18 @@ export const ReviewBody = styled.div`
 
 export const YourReview = styled.div`
   position: absolute;
-  top: 0;
-  right: 0;
+  bottom: 20px;
+  right: 20px;
   background: #7adae0;
   border-radius: 4px;
   color: #fff;
   font: 700 14px "Roboto";
   text-align: center;
   padding: 8px;
+
+  @media(min-width: 1024px) {
+    top: 20px;
+    right: 20px;
+    bottom: unset;
+  }
 `;

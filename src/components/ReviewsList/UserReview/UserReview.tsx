@@ -56,13 +56,12 @@ const UserReview = ({
             );
           })}
         </div>
-
-        {posted && <YourReview>Your review</YourReview>}
       </div>
       <ReviewBody>
         <p>{comment}</p>
         <HelfpulCounter helpful={helpful} />
       </ReviewBody>
+      {posted && <YourReview>Your review</YourReview>}
     </ReviewContainer>
   );
 };
