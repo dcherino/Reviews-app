@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export type Review = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   date: string;
@@ -10,7 +10,18 @@ export type Review = {
   helpful: number;
 };
 
-export const initialState = {
+type ReviewSuccess = {
+  payload: Array<Review>;
+};
+
+type Initial = {
+  loading: boolean;
+  hasErrors: boolean;
+  postedNew: boolean;
+  reviews: Array<Review>;
+};
+
+export const initialState: Initial = {
   loading: false,
   hasErrors: false,
   postedNew: false,
@@ -25,7 +36,7 @@ const reviewsSlice = createSlice({
     getReviews: (state) => {
       state.loading = true;
     },
-    getReviewsSuccess: (state, { payload }) => {
+    getReviewsSuccess: (state, { payload }: ReviewSuccess) => {
       state.reviews = payload;
       state.loading = false;
       state.hasErrors = false;
@@ -36,11 +47,8 @@ const reviewsSlice = createSlice({
     },
     addReview: (state, { payload }) => {
       state.postedNew = true;
-      const reviews: string[] = state.reviews;
+      const reviews = state.reviews;
       reviews.push(payload);
-    },
-    togglePostedNew: (state, { payload }) => {
-      state.postedNew = payload;
     },
   },
 });
@@ -51,18 +59,19 @@ export const {
   getReviewsSuccess,
   getReviewsFailure,
   addReview,
-  togglePostedNew,
 } = reviewsSlice.actions;
 
 // A selector
-export const reviewsSelector = (state: any) => state.reviews;
+export const reviewsSelector = (state: Initial) => state.reviews;
 
 // The reducer
 export default reviewsSlice.reducer;
 
 // Asynchronous thunk action
 export function fetchReviews() {
-  return async (dispatch: any) => {
+  return async (
+    dispatch: (arg0: { payload: Review[] | undefined; type: string }) => void
+  ) => {
     dispatch(getReviews());
 
     try {
@@ -76,10 +85,7 @@ export function fetchReviews() {
   };
 }
 
-export function updateReviews(review: any) {
-  return (dispatch: any) => dispatch(addReview(review));
-}
-
-export function updatePostedNew(value: boolean) {
-  return (dispatch: any) => dispatch(togglePostedNew(value));
+export function updateReviews(review: Review) {
+  return (dispatch: (arg0: { payload: any; type: string }) => any) =>
+    dispatch(addReview(review));
 }

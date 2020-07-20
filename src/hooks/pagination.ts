@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { Review } from "../slices/reviews";
 
-function usePagination(data: any, itemsPerPage: number) {
+function usePagination(data: Array<Review>, itemsPerPage: number) {
   const [currentPage, setCurrentPage] = useState(1);
   const maxPage = Math.ceil(data.length / itemsPerPage);
 
-  function currentData(): Array<any> {
+  function currentData(): Array<Review> {
     const begin = (currentPage - 1) * itemsPerPage;
     const end = begin + itemsPerPage;
     return data.slice(begin, end);

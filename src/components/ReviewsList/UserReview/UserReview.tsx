@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import HelfpulCounter from "../HelpfulCounter/HelpfulCounter";
 import { formatDate } from "../../../utils/utils";
+import { Review } from "../../../slices/reviews";
 import { Star } from "../../../App.styles";
 import {
   ReviewContainer,
@@ -9,16 +10,11 @@ import {
   YourReview,
 } from "./UserReview.style";
 
-type UserReviewProps = {
-  name: string;
-  email: string;
-  date: string;
-  rating: number;
-  comment: string;
-  helpful: number;
+interface UserReviewProps extends Review {
   posted?: boolean;
   delayTime: number;
-};
+}
+
 const UserReview = ({
   name,
   email,
@@ -29,6 +25,8 @@ const UserReview = ({
   posted,
   delayTime,
 }: UserReviewProps) => {
+  const [yourReview, setYourReview] = useState(posted);
+
   return (
     <ReviewContainer delayTime={delayTime}>
       <div className="review-header">
@@ -61,7 +59,7 @@ const UserReview = ({
         <p>{comment}</p>
         <HelfpulCounter helpful={helpful} />
       </ReviewBody>
-      {posted && <YourReview>Your review</YourReview>}
+      {yourReview && <YourReview>Your review</YourReview>}
     </ReviewContainer>
   );
 };
