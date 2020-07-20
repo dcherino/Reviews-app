@@ -19,7 +19,7 @@ const PercentageBar = ({ starText, percentage, count }: PercentageBarProps) => {
 
   useEffect(() => {
     setValue(percentage);
-  });
+  }, [percentage]);
 
   return (
     <ProgressContainer>
