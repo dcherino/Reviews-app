@@ -34,13 +34,3 @@ code {
 input[type="radio"] {
   display: none;
 }
-
-
-
-.left-column { grid-area: Left; }
-
-.right-column { grid-area: Right; background: #f0f3f4;}
-
-.Header { grid-area: Header; }
-
-.Body { grid-area: Body; background: #f0f3f4;}
