@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const initialState = {
   loading: false,
   hasErrors: false,
+  postedNew: false,
   reviews: [],
 };
 
@@ -24,6 +25,7 @@ const reviewsSlice = createSlice({
       state.hasErrors = true;
     },
     addReview: (state, { payload }) => {
+      state.postedNew = true;
       const reviews: string[] = state.reviews;
       reviews.push(payload);
     },

@@ -2,13 +2,15 @@ import React, { ChangeEvent, MouseEvent } from "react";
 import { useSelector } from "react-redux";
 import { reviewsSelector } from "../../slices/reviews";
 import Pagination from "./Pagination/Pagination";
-import UserReview from "./UserReview";
+import UserReview from "./UserReview/UserReview";
 import { sortReviewsByDate } from "../../utils/utils";
 import usePagination from "../../hooks/pagination";
 import { ReviewsListContainer } from "./ReviewsList.styles";
 
 export const ReviewsList = () => {
-  const { reviews, loading, hasErrors } = useSelector(reviewsSelector);
+  const { reviews, loading, hasErrors, postedNew } = useSelector(
+    reviewsSelector
+  );
   const sortedArray = sortReviewsByDate(reviews);
   const { next, prev, jump, currentData, currentPage, maxPage } = usePagination(
     sortedArray,
@@ -21,7 +23,11 @@ export const ReviewsList = () => {
     const currentPageData = currentData();
 
     return currentPageData.map((review, index) => (
-      <UserReview {...review} key={review.name + index} />
+      <UserReview
+        {...review}
+        key={review.name + index}
+        posted={(postedNew) && (currentPage === 1) && (index === 0)}
+      />
     ));
   };
 
@@ -47,7 +53,7 @@ export const ReviewsList = () => {
       <h3>Reviews</h3>
       <h4>{reviews.length} customer reviews</h4>
       <div className="wrap-review">{renderReviews()}</div>
-      
+
       {!loading && (
         <Pagination
           handleOnClick={handleOnClick}

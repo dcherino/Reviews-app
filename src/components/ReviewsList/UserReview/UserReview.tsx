@@ -1,17 +1,24 @@
 import React from "react";
 import HelfpulCounter from "../HelpfulCounter/HelpfulCounter";
-import { formatDate } from "../../utils/utils";
-import { Star } from "../../App.styles";
-import { ReviewContainer, ReviewInfo, ReviewBody } from "./UserReview.style";
+import { formatDate } from "../../../utils/utils";
+import { Star } from "../../../App.styles";
+import {
+  ReviewContainer,
+  ReviewInfo,
+  ReviewBody,
+  YourReview,
+} from "./UserReview.style";
 
-const UserReview = ({
-  name,
-  email,
-  date,
-  rating,
-  comment,
-  helpful,
-}: any) => {
+type UserReviewProps = {
+  name: string;
+  email: string;
+  date: string;
+  rating: number;
+  comment: string;
+  helpful: number;
+  posted?: boolean;
+};
+const UserReview = ({ name, email, date, rating, comment, helpful, posted }: UserReviewProps) => {
   return (
     <ReviewContainer>
       <div className="review-header">
@@ -36,6 +43,8 @@ const UserReview = ({
             );
           })}
         </div>
+
+        {posted && <YourReview>Your review</YourReview>}
       </div>
       <ReviewBody>
         <p>{comment}</p>

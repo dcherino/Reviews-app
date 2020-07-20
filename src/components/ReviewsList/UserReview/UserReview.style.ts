@@ -19,6 +19,10 @@ export const ReviewContainer = styled.div`
   border-radius: 4px;
   margin-bottom: 20px;
   animation: ${slideInAnimation} 0.4s linear;
+
+  & .review-header {
+    position: relative;
+  }
 `;
 
 export const ReviewInfo = styled.div`
@@ -44,4 +48,16 @@ export const ReviewBody = styled.div`
   p {
     margin-bottom: 20px;
   }
+`;
+
+export const YourReview = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #7adae0;
+  border-radius: 4px;
+  color: #fff;
+  font: 700 14px "Roboto";
+  text-align: center;
+  padding: 8px;
 `;
