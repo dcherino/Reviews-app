@@ -5,8 +5,8 @@ import React, {
   MouseEvent,
   Dispatch,
 } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { reviewsSelector, updateReviews } from "../../slices/reviews";
+import { useDispatch } from "react-redux";
+import { updateReviews } from "../../slices/reviews";
 import RatingStars from "./RatingStars";
 import {
   FormContainer,
@@ -17,7 +17,6 @@ import {
 } from "./ReviewForm.styles";
 
 const ReviewForm = () => {
-  const { reviews } = useSelector(reviewsSelector);
   const [isSent, setIsSent] = useState(false);
   const [review, setReview] = useState({
     name: "",
@@ -32,7 +31,7 @@ const ReviewForm = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    reviewDispatch(updateReviews(review))
+    reviewDispatch(updateReviews(review));
     setIsSent(true);
   };
 
@@ -104,7 +103,9 @@ const ReviewForm = () => {
             required
           />
 
-          <Button type="submit" tabIndex={9}>Add review</Button>
+          <Button type="submit" tabIndex={9}>
+            Add review
+          </Button>
         </form>
       )}
     </FormContainer>

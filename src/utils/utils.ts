@@ -1,5 +1,3 @@
-// import { Review } from "../redux/actions/reviewActions";
-
 type SortedReviews = Array<any>;
 
 export const formatDate = (UTCString: string): String => {
