@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { reviewsSelector } from "../../slices/reviews";
+import { reviewsSelector, Review } from "../../slices/reviews";
 import PercentageBar from "./PercentageBar/PercentageBar";
 import { calculateMeanOfRatings } from "../../utils/utils";
 import { ChartContainer } from "./Chart.styles";
@@ -17,7 +17,7 @@ const Chart = () => {
       <div style={{ marginTop: "40px" }}>
         {[...Array(numberOfBars)]
           .map((star, index) => {
-            const counter = reviews.filter((c: any) => c.rating === index)
+            const counter = reviews.filter((review: Review) => review.rating === index)
               .length;
             const percentValue = (counter / reviews.length) * 100;
             const roundedPercent = Math.ceil(percentValue * 1e2) / 1e2;

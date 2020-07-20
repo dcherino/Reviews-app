@@ -1,5 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export type Review = {
+  id: string;
+  name: string;
+  email: string;
+  date: string;
+  rating: number;
+  comment: string;
+  helpful: number;
+};
+
 export const initialState = {
   loading: false,
   hasErrors: false,
@@ -29,6 +39,9 @@ const reviewsSlice = createSlice({
       const reviews: string[] = state.reviews;
       reviews.push(payload);
     },
+    togglePostedNew: (state, { payload }) => {
+      state.postedNew = payload;
+    },
   },
 });
 
@@ -38,6 +51,7 @@ export const {
   getReviewsSuccess,
   getReviewsFailure,
   addReview,
+  togglePostedNew,
 } = reviewsSlice.actions;
 
 // A selector
@@ -64,4 +78,8 @@ export function fetchReviews() {
 
 export function updateReviews(review: any) {
   return (dispatch: any) => dispatch(addReview(review));
+}
+
+export function updatePostedNew(value: boolean) {
+  return (dispatch: any) => dispatch(togglePostedNew(value));
 }
