@@ -5,8 +5,8 @@ import React, {
   MouseEvent,
   Dispatch,
 } from "react";
-import { useDispatch } from "react-redux";
-import { updateReviews } from "../../slices/reviews";
+import { useDispatch, useSelector } from "react-redux";
+import { updateReviews, Review, reviewsSelector } from "../../slices/reviews";
 import RatingStars from "./RatingStars";
 import {
   FormContainer,
@@ -17,16 +17,18 @@ import {
 } from "./ReviewForm.styles";
 
 const ReviewForm = () => {
-  const [isSent, setIsSent] = useState(false);
-  const [review, setReview] = useState({
+  const intialValue: Review = {
+    id: 0,
     name: "",
     email: "",
     date: "",
     rating: 0,
     helpful: 0,
     comment: "",
-  });
-
+  };
+  const [isSent, setIsSent] = useState(false);
+  const [review, setReview] = useState(intialValue);
+  const { reviews } = useSelector(reviewsSelector);
   const reviewDispatch = useDispatch<Dispatch<any>>();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -45,11 +47,13 @@ const ReviewForm = () => {
   ): void => {
     const target = e.target;
     const name = target.name;
+    const id = reviews.length + 1;
     const value = name === "rating" ? parseInt(target.value) : target.value;
     const date = new Date(Date.now()).toUTCString();
 
     setReview({
       ...review,
+      id,
       date,
       [name]: value,
     });
