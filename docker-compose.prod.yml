@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+
+  webapp-prod:
+    container_name: interview_daniel_cherino_prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '1337:80'

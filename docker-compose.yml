@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  sample:
+  webapp:
     container_name: interview_daniel_cherino
     build:
       context: .
