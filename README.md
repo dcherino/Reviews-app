@@ -2,7 +2,9 @@
 
 ## Daniel Cherino Technical Test
 
-Technical test asignment for the recruitment process for the position at the Hub (checkout.com)
+A product review app which displays a graph with the current tendencies. Additionally, it shows a list of reviews from other users and it allows the possibility to add new review through a form.
+
+This is a technical test assignment for the recruitment process for the position at The Hub (checkout.com)
 
 ![alt text](home.png "Home Page")
 
@@ -18,13 +20,13 @@ In order to run the application, this repository should be cloned on a local com
 
 `docker-compose up --build`
 
-This command will build the development image and start the container where the app will run. If the installation is successful, the application should be accessible on http://localhost:3000. Please, keep in mind that the flag `--build` only is neccesary the first time running the container.
+This command will build the development image and start the container where the app will run. If the installation is successful, the application should be accessible on http://localhost:3000. Please, keep in mind that the flag `--build` only is necessary the first time running the container.
 
 To stop and remove the container, execute the following command:
 
 `docker-compose down`
 
-Alternatively, if you don't want to use docker-compose, then you need to run the followign commands:
+Alternatively, if you don't want to use docker-compose, then you need to run the following commands:
 
 `docker build -t cherino_webapp:dev .`
 
@@ -36,7 +38,7 @@ If you run into an <em>"ENOENT: no such file or directory, open '/app/package.js
 
 ## Running the app locally in PRODUCTION mode
 
-To fire up the container in prodcution mode:
+To fire up the container in production mode:
 
 `docker-compose -f docker-compose.prod.yml up -d --build`
 
@@ -61,6 +63,9 @@ The technologies used to develop this project are:
 * ReactJS
 * TypeScript
 * Redux Toolkit
+* Styled Components
+
+To see an extended explanation about the technical details and comments about the project, please [click here](./docs/Comments.md)
 
 ## Available Scripts
 
