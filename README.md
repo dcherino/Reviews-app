@@ -1,4 +1,4 @@
-# Product Review App
+# Daniel Cherino's Technical Test
 
 ![TypeScript badge](https://img.shields.io/badge/TypeScript-73.8%25-1081c1 "Typescript")
 ![Redux badge](https://img.shields.io/badge/Redux%20Toolkit-1.4.0-764abc "Redux")
@@ -6,11 +6,20 @@
 ![Docker badge](https://img.shields.io/badge/Dockerfile-3.9%25-65abd3 "Docker")
 
 
-## Daniel Cherino Technical Test
+## Product Review App
 
 A product review app which displays a graph with the current tendencies. Additionally, it shows a list of reviews from other users and it allows the possibility to add new review through a form.
 
 This is a technical test assignment for the recruitment process for the position at The Hub (checkout.com)
+
+The technologies used to develop this project are:
+
+* ReactJS
+* TypeScript
+* Redux Toolkit
+* Styled Components
+
+To see an extended explanation about the technical details and comments about the project, please [click here](./docs/Comments.md)
 
 **Live Demo:** [Here](http://esjavascript.com/)
 
@@ -26,56 +35,48 @@ Before you continue, ensure you have met the following requirements:
 ## Running the app locally in DEV mode
 In order to run the application, this repository should be cloned on a local computer. Opening the computer terminal, the following command needs to be run from the app root folder:
 
-`docker-compose up --build`
-
-This command will build the development image and start the container where the app will run. If the installation is successful, the application should be accessible on http://localhost:3000. Please, keep in mind that the flag `--build` only is necessary the first time running the container.
-
-To stop and remove the container, execute the following command:
-
-`docker-compose down`
-
-Alternatively, if you don't want to use docker-compose, then you need to run the following commands:
-
 `docker build -t cherino_webapp:dev .`
+
+This command will build the development image. Please, keep in mind that this is only required once time.
 
 Then, spin up the container once the build is done:
 
-`$ docker run  -it --rm -v ${PWD}:/app -v /app/node_modules -p 3001:3000 -e CHOKIDAR_USEPOLLING=true cherino_webapp:dev`
+`docker run --name review_app -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true cherino_webapp:dev`
+
+Navigate to http://localhost:3000/ in your browser to view the app.
 
 If you run into an <em>"ENOENT: no such file or directory, open '/app/package.json"</em> error, you may need to add an additional volume: `-v /app/package.json`.
 
-## Running the app locally in PRODUCTION mode
+To stop the Docker container run:
 
-To fire up the container in production mode:
+`docker stop review_app`
 
-`docker-compose -f docker-compose.prod.yml up -d --build`
+To run the [scripts](#scripts) within the container:
 
-<em>Again, the `--build` flag should be used only the first time.</em>
+`docker exec -it review_app <command>`
 
-Navigate to http://localhost:1337/ in your browser to view the app.
+## Running the app in PRODUCTION mode
 
-To build the image with the Dockerfile instead:
+To build the image in production mode:
 
-`docker build -f Dockerfile.prod -t cherino_webapp:prod .`
+`docker build -f Dockerfile.prod -t cherino_webapp:prod`
 
 Then, spin up the container:
 
-`docker run -it --rm -p 1337:80 cherino_webapp:prod`
+`docker run --name review_app_prod -it --rm -p 1337:80 cherino_webapp:prod`
+
+Navigate to http://localhost:1337/ in your browser to view the app.
+
+To stop the prodcution container:
+
+`docker stop review_app_prod`
 
 # Technical details
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The technologies used to develop this project are:
 
-* ReactJS
-* TypeScript
-* Redux Toolkit
-* Styled Components
-
-To see an extended explanation about the technical details and comments about the project, please [click here](./docs/Comments.md)
-
-## Available Scripts
+## <a name="scripts"></a>Available Scripts
 
 In the project directory, you can run:
 

@@ -17,8 +17,20 @@ Although I think that for this project would be easier using CSS Modules, I deci
 
 ## Design
 
-I created the design from scratch using Photoshop and Figma. The result is a beautiful user-experience. Although I browsed the Internet to get some inspiration, it is a totally original design. It is a fully responsive design with very intuitive elements for the user.
+The design was created from scratch using Photoshop, Illustrator and Figma. The result, in my opinion, is a beautiful interface with a nice user-experience. Although I get some inspiration for the graph, it is a totally original design, fully responsive with very intuitive elements for the user.
 
 ## Improvements
 
 More than improvements, I would like to added a option to sort and filter reviews but I ran out of time. For sure I will add them in my spare time independently of the recruitment proccess.
+
+## Test suites coverage
+
+There test suit cover the main functionality of the application which are:
+
+* Get inital state from the store.
+* It should properly set loading and error state when fetching data from API.
+* It should properly populate reviews in the state when fetching data from API.
+* It should render the form.
+* It should submit and render a confirmation message.
+* It should thrown an Error message when failing fetching data.
+* It should add a new review to the store.
