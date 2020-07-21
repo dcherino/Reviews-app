@@ -1,12 +1,18 @@
 # Product Review App
 
+![TypeScript badge](https://img.shields.io/badge/TypeScript-73.8%25-1081c1 "Typescript")
+![Redux badge](https://img.shields.io/badge/Redux%20Toolkit-1.4.0-764abc "Redux")
+![Styled components badge](https://img.shields.io/badge/Styled%20Componets-5.1.1-e433ea "Styled componetns")
+![Docker badge](https://img.shields.io/badge/Dockerfile-3.9%25-65abd3 "Docker")
+
+
 ## Daniel Cherino Technical Test
 
 A product review app which displays a graph with the current tendencies. Additionally, it shows a list of reviews from other users and it allows the possibility to add new review through a form.
 
 This is a technical test assignment for the recruitment process for the position at The Hub (checkout.com)
 
-![alt text](home.png "Home Page")
+![Home page screenshot](home.png "Home Page")
 
 ## Prerequisites
 
