@@ -1,5 +1,6 @@
 # Comments about the project
 
+
 ## Redux toolkit
 
 I believe that the project is very simple and Redux is not really necessary here. It should be enough managing the state with the new React Context.
@@ -17,3 +18,5 @@ Although I think that for this project would be easier using CSS Modules, I deci
 ## Design
 
 I created the design from scratch using Photoshop and Figma. Although I browsed the Internet to get some inspiration, it is a totally original design. It is a fully responsive design with very intuitive elements for the user.
+
+## Improvements
