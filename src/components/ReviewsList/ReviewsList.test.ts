@@ -109,38 +109,8 @@ it("should add a new review in the reviews state", () => {
     helpful: 3,
   };
 
-  const finalList = [
-    {
-      id: 501,
-      name: "Connor McCloud",
-      email: "theimmortal@gmail.com",
-      date: "2019-08-07T03:43:43Z",
-      rating: 3,
-      comment:
-        "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      helpful: 3,
-    },
-    {
-      id: 502,
-      name: "Pedro Espinoza",
-      email: "thespanish@gmail.com",
-      date: "2020-07-05T01:43:43Z",
-      rating: 5,
-      comment:
-        "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      helpful: 3,
-    },
-    {
-      id: 502,
-      name: "Pedro Espinoza",
-      email: "thespanish@gmail.com",
-      date: "2020-07-05T01:43:43Z",
-      rating: 5,
-      comment:
-        "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio. Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-      helpful: 3,
-    },
-  ];
+  const finalList = [...data, newReview]
+
   const firstState = reducer(initialState, getReviewsSuccess(data));
 
   const nextState = reducer(firstState, addReview(newReview));
@@ -148,7 +118,7 @@ it("should add a new review in the reviews state", () => {
   const rootState = { reviews: nextState };
   expect(loadingSelector(rootState)).toBeFalsy();
   expect(hasErrorsSelector(rootState)).toBeFalsy();
-  expect(reviewListSelector(rootState)).toMatchObject(finalList);
+  expect(reviewListSelector(rootState)).toEqual(finalList);
 });
 
 // it("should render Error message when failing fetching data", () => {});
