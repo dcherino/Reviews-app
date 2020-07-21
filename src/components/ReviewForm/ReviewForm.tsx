@@ -63,7 +63,7 @@ const ReviewForm = () => {
     <FormContainer>
       <h2>Write a review</h2>
       {isSent && (
-        <div title="Thank you">
+        <div title="Thank you" data-testid="thank-you-page">
           <h3>Thank you!</h3>
           <p>Your review has been submited successfuly.</p>
           <Button onClick={handleClick}>Write a new review</Button>
