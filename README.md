@@ -12,6 +12,8 @@ A product review app which displays a graph with the current tendencies. Additio
 
 This is a technical test assignment for the recruitment process for the position at The Hub (checkout.com)
 
+**Live Demo:** [Here](http://esjavascript.com/)
+
 ![Home page screenshot](home.png "Home Page")
 
 ## Prerequisites
