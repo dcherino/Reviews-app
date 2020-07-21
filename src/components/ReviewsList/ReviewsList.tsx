@@ -41,11 +41,11 @@ export const ReviewsList = () => {
     if (shouldScroll && listRef.current) {
       scrollToBottom();
     }
-  }, [currentPage]);
+  }, [currentPage, shouldScroll]);
 
   useEffect(() => {
     if (shouldScroll) jump(0);
-  }, [reviews]);
+  }, [reviews, shouldScroll, jump]);
 
   const renderReviews = () => {
     if (loading) return <p>Loading reviews...</p>;
