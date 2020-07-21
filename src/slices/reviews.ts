@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 export type Review = {
   id: number;
@@ -10,11 +10,7 @@ export type Review = {
   helpful: number;
 };
 
-type ReviewSuccess = {
-  payload: Array<Review>;
-};
-
-type Initial = {
+export type Initial = {
   loading: boolean;
   hasErrors: boolean;
   postedNew: boolean;
@@ -30,13 +26,13 @@ export const initialState: Initial = {
 
 // A slice for reviews with our three reducers
 const reviewsSlice = createSlice({
-  name: "reviews",
+  name: "reviewsState",
   initialState,
   reducers: {
     getReviews: (state) => {
       state.loading = true;
     },
-    getReviewsSuccess: (state, { payload }: ReviewSuccess) => {
+    getReviewsSuccess: (state, { payload }) => {
       state.reviews = payload;
       state.loading = false;
       state.hasErrors = false;
@@ -62,16 +58,18 @@ export const {
 } = reviewsSlice.actions;
 
 // A selector
-export const reviewsSelector = (state: { reviews: any }) => state.reviews;
+export const reviewsSelector = (state: { reviews: Initial }) => state.reviews;
+export const loadingSelector = (state: { reviews: Initial }) => state.reviews.loading;
+export const hasErrorsSelector = (state: { reviews: Initial }) => state.reviews.hasErrors;
+export const reviewListSelector = (state: { reviews: Initial }) => state.reviews.reviews;
+export const postedNewSelector = (state: { reviews: Initial }) => state.reviews.postedNew;
 
 // The reducer
 export default reviewsSlice.reducer;
 
 // Asynchronous thunk action
 export function fetchReviews() {
-  return async (
-    dispatch: (arg0: { payload: Review[] | undefined; type: string }) => void
-  ) => {
+  return async (dispatch: (arg0: { payload: any; type: string }) => void) => {
     dispatch(getReviews());
 
     try {
