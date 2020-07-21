@@ -74,7 +74,7 @@ describe("should properly set loading and error state when fetching request", ()
   });
 });
 
-it("should add a new review in the reviews state", () => {
+it("It should add a new review to the store.", () => {
   const data = [
     {
       id: 501,
@@ -120,7 +120,3 @@ it("should add a new review in the reviews state", () => {
   expect(hasErrorsSelector(rootState)).toBeFalsy();
   expect(reviewListSelector(rootState)).toEqual(finalList);
 });
-
-// it("should render Error message when failing fetching data", () => {});
-
-// it("should render reviews when fetching data is successful", () => {});
