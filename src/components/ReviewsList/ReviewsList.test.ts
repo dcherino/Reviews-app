@@ -3,7 +3,6 @@ import reducer, {
   loadingSelector,
   hasErrorsSelector,
   reviewListSelector,
-  postedNewSelector,
   getReviews,
   getReviewsSuccess,
   getReviewsFailure,
@@ -28,8 +27,8 @@ describe("should properly set loading and error state when fetching request", ()
     const nextState = reducer(initialState, getReviews());
 
     const rootState = { reviews: nextState };
-    expect(loadingSelector(rootState)).toEqual(true);
-    expect(hasErrorsSelector(rootState)).toEqual(false);
+    expect(loadingSelector(rootState)).toBeTruthy();
+    expect(hasErrorsSelector(rootState)).toBeFalsy();
     expect(reviewListSelector(rootState)).toEqual([]);
   });
 
@@ -60,8 +59,8 @@ describe("should properly set loading and error state when fetching request", ()
     const nextState = reducer(initialState, getReviewsSuccess(data));
 
     const rootState = { reviews: nextState };
-    expect(loadingSelector(rootState)).toEqual(false);
-    expect(hasErrorsSelector(rootState)).toEqual(false);
+    expect(loadingSelector(rootState)).toBeFalsy();
+    expect(hasErrorsSelector(rootState)).toBeFalsy();
     expect(reviewListSelector(rootState)).toEqual(data);
   });
 
@@ -69,8 +68,8 @@ describe("should properly set loading and error state when fetching request", ()
     const nextState = reducer(initialState, getReviewsFailure());
 
     const rootState = { reviews: nextState };
-    expect(loadingSelector(rootState)).toEqual(false);
-    expect(hasErrorsSelector(rootState)).toEqual(true);
+    expect(loadingSelector(rootState)).toBeFalsy();
+    expect(hasErrorsSelector(rootState)).toBeTruthy();
     expect(reviewListSelector(rootState)).toEqual([]);
   });
 });
@@ -147,8 +146,8 @@ it("should add a new review in the reviews state", () => {
   const nextState = reducer(firstState, addReview(newReview));
 
   const rootState = { reviews: nextState };
-  expect(loadingSelector(rootState)).toEqual(false);
-  expect(hasErrorsSelector(rootState)).toEqual(false);
+  expect(loadingSelector(rootState)).toBeFalsy();
+  expect(hasErrorsSelector(rootState)).toBeFalsy();
   expect(reviewListSelector(rootState)).toMatchObject(finalList);
 });
 
