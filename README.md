@@ -37,7 +37,7 @@ In order to run the application, this repository should be cloned on a local com
 
 `docker build -t cherino_webapp:dev .`
 
-This command will build the development image. Please, keep in mind that this is only required once time.
+This command will build the development image. Please, keep in mind that this is only required once.
 
 Then, spin up the container once the build is done:
 
@@ -67,7 +67,7 @@ Then, spin up the container:
 
 Navigate to http://localhost:1337/ in your browser to view the app.
 
-To stop the prodcution container:
+To stop the production container:
 
 `docker stop review_app_prod`
 
