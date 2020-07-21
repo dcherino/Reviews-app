@@ -63,14 +63,14 @@ const ReviewForm = () => {
     <FormContainer>
       <h2>Write a review</h2>
       {isSent && (
-        <div>
+        <div title="Thank you">
           <h3>Thank you!</h3>
           <p>Your review has been submited successfuly.</p>
           <Button onClick={handleClick}>Write a new review</Button>
         </div>
       )}
       {!isSent && (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} data-testid="review-form">
           <div className="inputs-wrap">
             <div>
               <Label htmlFor="name">Name:</Label>
@@ -78,9 +78,11 @@ const ReviewForm = () => {
                 type="text"
                 name="name"
                 id="name"
+                placeholder="Firstname Lastname"
                 tabIndex={1}
                 onChange={handleInputChange}
                 required
+                data-testid="name"
               />
             </div>
             <div>
@@ -88,10 +90,12 @@ const ReviewForm = () => {
               <InputText
                 type="email"
                 name="email"
+                placeholder="youremail@gmail.com"
                 id="email"
                 tabIndex={2}
                 onChange={handleInputChange}
                 required
+                data-testid="email"
               />
             </div>
           </div>
@@ -102,12 +106,19 @@ const ReviewForm = () => {
           <TextArea
             name="comment"
             id="comment"
+            placeholder="Write here your comment"
             tabIndex={8}
             onChange={handleInputChange}
             required
+            data-testid="comment"
           />
 
-          <Button type="submit" tabIndex={9}>
+          <Button
+            type="submit"
+            title="Add review"
+            tabIndex={9}
+            data-testid="submit"
+          >
             Add review
           </Button>
         </form>
