@@ -1,6 +1,7 @@
 # Comments about the project
 
 
+
 ## Redux toolkit
 
 The application is not really big and Redux is not really necessary here. React Context should be enough managing the state in this case. However, I decided to use Redux for three main reasons:
@@ -25,7 +26,7 @@ More than improvements, I would like to added a option to sort and filter review
 
 ## Test suites coverage
 
-There test suit cover the main functionality of the application which are:
+Due the short period to develop the project, I focused on testing the main functionalities of the application which are:
 
 * Get inital state from the store.
 * It should properly set loading and error state when fetching data from API.
@@ -34,3 +35,5 @@ There test suit cover the main functionality of the application which are:
 * It should submit and render a confirmation message.
 * It should thrown an Error message when failing fetching data.
 * It should add a new review to the store.
+
+Having the proper time, I would aim to cover every component.
