@@ -28,13 +28,13 @@ Before you continue, ensure you have met the following requirements:
 ## Running the app locally in DEV mode
 In order to run the application, this repository should be cloned on a local computer. Opening the computer terminal, the following command needs to be run from the app root folder:
 
-`docker build -t cherino_webapp:dev .`
+`docker build -t reviews_app:dev .`
 
 This command will build the development image. Please, keep in mind that this is only required once.
 
 Then, spin up the container once the build is done:
 
-`docker run --name review_app -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true cherino_webapp:dev`
+`docker run --name review_app -it --rm -v ${PWD}:/app -v /app/node_modules -p 3000:3000 -e CHOKIDAR_USEPOLLING=true reviews_app:dev`
 
 Navigate to http://localhost:3000/ in your browser to view the app.
 
@@ -52,11 +52,11 @@ To run the [scripts](#scripts) within the container:
 
 To build the image in production mode:
 
-`docker build -f Dockerfile.prod -t cherino_webapp:prod`
+`docker build -f Dockerfile.prod -t reviews_app:prod`
 
 Then, spin up the container:
 
-`docker run --name review_app_prod -it --rm -p 1337:80 cherino_webapp:prod`
+`docker run --name review_app_prod -it --rm -p 1337:80 reviews_app:prod`
 
 Navigate to http://localhost:1337/ in your browser to view the app.
 
