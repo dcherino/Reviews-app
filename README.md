@@ -14,7 +14,7 @@ The technologies used to develop this project are:
 * Redux Toolkit
 * Styled Components
 
-**Live Demo:** [Here](http://esjavascript.com/)
+**Live Demo:** [Here](http://reviewsapp.cherino.me/)
 
 ![Home page screenshot](home.png "Home Page")
 
